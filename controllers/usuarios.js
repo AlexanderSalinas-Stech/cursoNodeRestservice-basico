@@ -53,14 +53,16 @@ const usuariosPost= async (req=request, res=response) =>{
 
 const usuariosDelete= async (req=request, res=response) =>{
     const {id}=req.params;
-
+    console.log(req)
     //Borrado Fisico
     // const usuario = await Usuario.findByIdAndDelete(id);
 
     //Cambio estado
     const usuario = await Usuario.findByIdAndUpdate(id,{estado:false});
+    const usuarioAutenticado=req.usuario;
+    
 
-    res.json({msg:'Usuario Borrado'})
+    res.json({msg:'Usuario Borrado',usuario,usuarioAutenticado})
 }
 
 export {
