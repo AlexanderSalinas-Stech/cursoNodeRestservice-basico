@@ -1,6 +1,6 @@
 import {Router} from 'express';
-import {usuariosGet,usuariosPost,usuariosPut,usuariosDelete} from '../controllers/usuarios.js'
 import { check } from "express-validator";
+import {usuariosGet,usuariosPost,usuariosPut,usuariosDelete} from '../controllers/usuarios.js'
 import { esRolValido, emailExiste, existeUsuarioId } from '../helpers/db-validators.js';
 import {
     validarJWT,

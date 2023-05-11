@@ -19,7 +19,8 @@ const usuarioSchema=Schema({
     rol:{
         type: String, 
         required: true,
-        enum:['ADMIN','USER']
+        enum:['ADMIN','USER'],
+        default:'USER'
     },
     estado:{
         type: Boolean, 
