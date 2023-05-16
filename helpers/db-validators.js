@@ -1,5 +1,6 @@
 import { Role } from '../models/role.js';
-import { Usuario } from '../models/usuario.js';
+import { Usuario, Categoria, Producto } from '../models/index.js';
+import { isValidObjectId } from 'mongoose';
 
 const esRolValido =async(rol='')=>{
     const exsitRol = await Role.findOne({rol});
@@ -24,8 +25,50 @@ const existeUsuarioId= async (id)=>{
     }
 };
 
+const existeCategoriaId= async (id)=>{
+
+    const esMongoID = isValidObjectId(id); // true
+ 
+    if (esMongoID) {
+        // id valido
+        //verificar si la categoria existe
+        const existeCategoria=await Categoria.findById(id);
+        if (!existeCategoria) {
+            throw new Error(`La Categoria con id: ${id} no existe`);
+        }
+        
+    } else {
+        // id no valido
+        throw new Error(`No es un id valido`);
+    }
+    
+    
+};
+
+const existeProductoId= async (id)=>{
+
+    const esMongoID = isValidObjectId(id); // true
+ 
+    if (esMongoID) {
+        // id valido
+        //verificar si la producto existe
+        const existeProducto=await Producto.findById(id);
+        if (!existeProducto) {
+            throw new Error(`El producto con id: ${id} no existe`);
+        }
+        
+    } else {
+        // id no valido
+        throw new Error(`No es un id valido`);
+    }
+    
+    
+};
+
 export{
     esRolValido,
     emailExiste,
-    existeUsuarioId
+    existeUsuarioId,
+    existeCategoriaId,
+    existeProductoId
 }
