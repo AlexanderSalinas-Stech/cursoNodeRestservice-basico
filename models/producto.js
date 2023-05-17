@@ -32,6 +32,9 @@ const ProductoSchema=Schema({
         type:Boolean,
         default:true
     },
+    img:{
+        type:String,
+    },
     createdAt:{
         type:Date,
         default:Date.now
